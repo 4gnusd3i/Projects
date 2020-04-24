@@ -22,7 +22,8 @@ fi
 
 interface=$1
 
-# Function for obtaining the IP-address associated with the interface and formatting the resulting string correctly. If no interface with the specified interface exists, exits script and notifies user. 
+# Function for obtaining the IP-address associated with the interface and formatting the resulting string correctly.
+# If no interface with the specified interface exists, exits script and notifies user. 
 get_ip()
 {
 	ip=$(ip addr show $interface | awk '/inet/{print ($2)}' | awk 'FNR==1' \
@@ -34,7 +35,8 @@ get_ip()
 }
 
 
-# Function for perfoming ping against IP-addresses recieved from the for-loop at end of script. If the ping is successful, prints IP-address to STDOUT.
+# Function for perfoming ping against IP-addresses recieved from the for-loop at end of script.
+# If the ping is successful, prints IP-address to STDOUT.
 ping_ip()
 {
 	ping -c 2 $1 > /dev/null
